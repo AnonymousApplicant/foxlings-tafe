@@ -7,11 +7,15 @@ public class FoxMovement : MonoBehaviour
     public float gravity;
     public float moveSpeed;
     public float dashSpeed;
+    public float rotSpeed;
     public float jumpForce;
+    public float hopForce;
     public float checkRadius;
     public GameObject groundCheckObj;
 
     private float velocity;
+    private Vector3 targetDir;
+    private Vector3 currentDir;
     private bool isGrounded;
     private float currentSpeed;
     private CharacterController controller;
@@ -21,6 +25,8 @@ public class FoxMovement : MonoBehaviour
     {
         controller = gameObject.GetComponent<CharacterController>();
         currentSpeed = moveSpeed;
+        currentDir = transform.eulerAngles;
+        targetDir = transform.eulerAngles;
     }
 
     // Update is called once per frame
@@ -29,12 +35,27 @@ public class FoxMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheckObj.transform.position, checkRadius, LayerMask.GetMask("Ground"), QueryTriggerInteraction.Ignore);
 
         Vector3 move = Vector3.zero;
-        float v = Input.GetAxis("Vertical") * currentSpeed;
-        float h = Input.GetAxis("Horizontal") * currentSpeed;
+        bool f = Input.GetButton("Forwards");
+        bool b = Input.GetButton("Backwards");
+        bool l = Input.GetButton("Left");
+        bool r = Input.GetButton("Right");
 
         if (isGrounded)
         {
-            velocity = -gravity * Time.deltaTime;
+            if (f || b || l || r)
+            {
+                if (f && b || l && r)
+                {
+                    return;
+                }
+                else
+                {
+                    velocity = hopForce;
+                }
+            }
+
+            // velocity = -gravity * Time.deltaTime;
+
             if (Input.GetButtonDown("Jump"))
             {
                 velocity = jumpForce;
@@ -45,37 +66,84 @@ public class FoxMovement : MonoBehaviour
             velocity -= gravity * Time.deltaTime;
         }
 
-        ApplyMovement(move, velocity, v, h);
+        ApplyMovement(move, velocity, f, b, l, r);
     }
 
-    void ApplyMovement(Vector3 position, float velocity, float vertical, float horizontal)
+    void ApplyMovement(Vector3 position, float velocity, bool forwards, bool backwards, bool left, bool right)
     {
-        if (vertical > 0.9)
+        // Opposites
+        if (forwards && backwards || left && right)
+        {
+            return;
+        }
+
+        // Up & Left
+        if (forwards && left)
         {
             Vector3 rot = transform.eulerAngles;
-            rot.y = 0;
+            rot.y = -45;
             transform.eulerAngles = rot;
-            position += transform.forward * currentSpeed * Time.deltaTime;
         }
-        if (vertical < -0.9)
+        // Up & Right
+        else if (forwards && right)
+        {
+            Vector3 rot = transform.eulerAngles;
+            rot.y = 45;
+            transform.eulerAngles = rot;
+        }
+        // Down & Left
+        else if (backwards && left)
+        {
+            Vector3 rot = transform.eulerAngles;
+            rot.y = -135;
+            transform.eulerAngles = rot;
+        }
+        // Down & Right
+        else if (backwards && right)
+        {
+            Vector3 rot = transform.eulerAngles;
+            rot.y = 135;
+            transform.eulerAngles = rot;
+        }
+        // Down
+        else if (backwards)
         {
             Vector3 rot = transform.eulerAngles;
             rot.y = 180;
             transform.eulerAngles = rot;
-            position += transform.forward * currentSpeed * Time.deltaTime;
         }
-        if (horizontal > 0.9)
+        // Up
+        else if (forwards)
         {
             Vector3 rot = transform.eulerAngles;
-            rot.y = 90;
+            rot.y = 0;
             transform.eulerAngles = rot;
-            position += transform.forward * currentSpeed * Time.deltaTime;
         }
-        if (horizontal < -0.9)
+        else if (left)
         {
             Vector3 rot = transform.eulerAngles;
             rot.y = -90;
             transform.eulerAngles = rot;
+        }
+        else if (right)
+        {
+            Vector3 rot = transform.eulerAngles;
+            rot.y = 90;
+            transform.eulerAngles = rot;
+        }
+
+/*
+        currentDir = transform.eulerAngles;
+
+        if (currentDir.y != targetDir.y)
+        {
+            currentDir.y += rotSpeed;
+            transform.eulerAngles = currentDir;
+        }
+*/
+
+        if (forwards || backwards || left || right)
+        {
             position += transform.forward * currentSpeed * Time.deltaTime;
         }
 
