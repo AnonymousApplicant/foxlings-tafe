@@ -42,24 +42,7 @@ public class FoxMovement : MonoBehaviour
 
         if (isGrounded)
         {
-            if (f || b || l || r)
-            {
-                if (f && b || l && r)
-                {
-                    return;
-                }
-                else
-                {
-                    velocity = hopForce;
-                }
-            }
-
-            // velocity = -gravity * Time.deltaTime;
-
-            if (Input.GetButtonDown("Jump"))
-            {
-                velocity = jumpForce;
-            }
+            velocity = -gravity * Time.deltaTime;
         }
         else
         {

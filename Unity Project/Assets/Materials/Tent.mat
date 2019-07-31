@@ -70,11 +70,11 @@ Material:
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 0
-    - _SpecularIntensity: 0.2
+    - _SpecularIntensity: 0
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.4339623, g: 0.23618132, b: 0.059362777, a: 1}
+    - _Color: {r: 0.3679245, g: 0.26742864, b: 0.17875579, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
