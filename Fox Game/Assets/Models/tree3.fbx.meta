@@ -1,16 +1,15 @@
 fileFormatVersion: 2
-guid: 5a72144a191efa741a5b0c9f1792b6af
+guid: c7382ee170d240647bee38710c15c86c
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Frame
-    2100002: Conveyor
-    2100004: Tunnels
+    2100000: Leaves
+    2100002: Trunk
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Conveyor Belt
+    4300000: Circle
   externalObjects: {}
   materials:
     importMaterials: 0
