@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 606538231748340502}
   - component: {fileID: 606538231749339606}
   - component: {fileID: 181464669566816197}
-  - component: {fileID: 438969704361406862}
   m_Layer: 0
   m_Name: Pebble
   m_TagString: Untagged
@@ -91,19 +90,5 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 0325a14368861d949bb5a2ca6de40bea, type: 3}
---- !u!64 &438969704361406862
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606538231751538454}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 0325a14368861d949bb5a2ca6de40bea, type: 3}

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FoxMovement : MonoBehaviour
 {
@@ -30,13 +28,14 @@ public class FoxMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheckObj.transform.position, checkRadius, LayerMask.GetMask("Ground"), QueryTriggerInteraction.Ignore);
-
-        Vector3 move = Vector3.zero;
         bool f = Input.GetButton("Forwards");
         bool b = Input.GetButton("Backwards");
         bool l = Input.GetButton("Left");
         bool r = Input.GetButton("Right");
+
+        isGrounded = Physics.CheckSphere(groundCheckObj.transform.position, checkRadius, LayerMask.GetMask("Ground"), QueryTriggerInteraction.Ignore);
+
+        Vector3 move = Vector3.zero;
 
         if (isGrounded)
         {

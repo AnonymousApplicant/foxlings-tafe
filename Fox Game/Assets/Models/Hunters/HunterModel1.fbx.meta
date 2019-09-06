@@ -36,6 +36,12 @@ ModelImporter:
     4300006: Jeans
     4300008: Suspenders
     4300010: Boots
+    6400000: 1 Body
+    6400002: Boots
+    6400004: Hair
+    6400006: Jeans
+    6400008: Plaid Shirt
+    6400010: Suspenders
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -69,7 +75,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

@@ -108,7 +108,7 @@ Material:
     - _MainTexturePower: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalIntensity: 1
+    - _NormalIntensity: 0
     - _OcclusionStrength: 1
     - _OtherSettings: 1
     - _Parallax: 0.02
@@ -153,7 +153,7 @@ Material:
     m_Colors:
     - _AOColor: {r: 1, g: 1, b: 1, a: 1}
     - _AmbientColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.5, g: 0.24285808, b: 0.12971699, a: 1}
+    - _Color: {r: 0.2830189, g: 0.15493049, b: 0.09478463, a: 1}
     - _Color1_B: {r: 1, g: 1, b: 1, a: 1}
     - _Color1_D: {r: 1, g: 1, b: 1, a: 1}
     - _Color1_F: {r: 1, g: 1, b: 1, a: 1}

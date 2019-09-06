@@ -9,8 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Vision Cone
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHABLEND_ON _BLENDMODE_ALPHA _ENABLE_FOG_ON_TRANSPARENT _GLOSSYREFLECTIONS_OFF
-    _NORMALMAP_TANGENT_SPACE _SPECULARHIGHLIGHTS_OFF _SURFACE_TYPE_TRANSPARENT
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _BLENDMODE_ALPHA _ENABLE_FOG_ON_TRANSPARENT
+    _GLOSSYREFLECTIONS_OFF _NORMALMAP_TANGENT_SPACE _SPECULARHIGHLIGHTS_OFF _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -215,7 +215,7 @@ Material:
     - _LinkDetailsWithBase: 0
     - _MaterialID: 1
     - _Metallic: 0
-    - _Mode: 2
+    - _Mode: 3
     - _NormalIntensity: 1
     - _NormalMapSpace: 0
     - _NormalScale: 1
@@ -240,7 +240,7 @@ Material:
     - _SpecularAAThreshold: 0.2
     - _SpecularHighlights: 0
     - _SpecularIntensity: 0.2
-    - _SrcBlend: 5
+    - _SrcBlend: 1
     - _StencilRef: 2
     - _StencilRefMV: 128
     - _StencilWriteMask: 7
@@ -270,7 +270,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 0, b: 0, a: 0.56078434}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0, b: 0, a: 0.56078434}
+    - _Color: {r: 1, g: 0, b: 0, a: 0.42745098}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 1, g: 0, b: 0, a: 1}

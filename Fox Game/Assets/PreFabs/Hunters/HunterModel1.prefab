@@ -317,7 +317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2105616211915729850}
-  - component: {fileID: 3382305060874155896}
+  - component: {fileID: 8409953642195730866}
   m_Layer: 0
   m_Name: HunterModel1
   m_TagString: Untagged
@@ -346,8 +346,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &3382305060874155896
-MeshCollider:
+--- !u!136 &8409953642195730866
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -356,10 +356,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
+  m_Radius: 2.29
+  m_Height: 17.95
+  m_Direction: 1
+  m_Center: {x: 0, y: 7.22, z: 0.64}
 --- !u!1 &2105616211915962268
 GameObject:
   m_ObjectHideFlags: 0

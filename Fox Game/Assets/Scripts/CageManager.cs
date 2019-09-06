@@ -6,7 +6,8 @@ public class CageManager : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            GetComponentInParent<Animation>().Play();
+            GetComponentInParent<Animator>().SetTrigger("triggerCage");
+            GetComponentInChildren<FollowMovement>().isFollowing = true;
         }
     }
 }
