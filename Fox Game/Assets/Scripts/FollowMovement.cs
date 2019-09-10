@@ -10,6 +10,7 @@ public class FollowMovement : MonoBehaviour
 
     private FollowManager followManager; // FollowManager script variable
     private bool assigned = false; // Keeps track if the foxling has assigned itself to the conga line
+    [SerializeField]
     private int position; // Keeps track of what position the foxling is in the conga line (what list element they grab from)
     private int waitCount = 0; // Keeps track of how many frames have passed since collection
     private bool collected = false; // Keeps track of if the foxling got collected
@@ -36,21 +37,21 @@ public class FollowMovement : MonoBehaviour
             if (assigned == false)
             {
                 // If collectedFoxes includes player and 2 foxlings, assign 3rd position
-                if (followManager.collectedFoxes.Count == 3)
+                if (followManager.collectedFoxes.Count == 4)
                 {
-                    position = 10;
+                    position = 5;
                     assigned = true;
                 }
                 // If collectedFoxes includes player and 1 foxling, assign 2nd position
-                else if (followManager.collectedFoxes.Count == 2)
+                else if (followManager.collectedFoxes.Count == 3)
                 {
-                    position = 20;
+                    position = (followManager.framesPerGap + 3);
                     assigned = true;
                 }
                 // If collectedFoxes includes only player, assign 1st position
-                else if (followManager.collectedFoxes.Count == 1)
+                else if (followManager.collectedFoxes.Count == 2)
                 {
-                    position = 30;
+                    position = (2 * followManager.framesPerGap);
                     assigned = true;
                 }
             }
