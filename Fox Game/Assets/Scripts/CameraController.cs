@@ -1,31 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Manages how to player camera moves
+/// </summary>
 public class CameraController : MonoBehaviour
 {
+    public Vector3 rotOffset; // Rotation offset
+    public Vector3 posOffset; // Position offset
+    public Transform target; // Target object to offset camera from
 
-    public bool lookAtTarget;
-    public bool localPosition;
-    public Vector3 rotationLock;
-    public Vector3 posOffset;
-    public Transform target;
+    private void Awake()
+    {
+        // Set camera angle to rotational offset 
+        transform.eulerAngles = rotOffset;
+    }
 
-    // Update is called once per frame
     void Update()
     {
-        if (localPosition == true)
-        {
-            transform.position = target.position + posOffset;
-        }
-
-        if (lookAtTarget == true)
-        {
-            transform.LookAt(target);
-        }
-        else
-        {
-            transform.eulerAngles = rotationLock;
-        }
+        // Update camera position to target position and apply posOffset
+        transform.position = target.position + posOffset;
     }
 }

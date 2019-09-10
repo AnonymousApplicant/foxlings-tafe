@@ -1,75 +1,54 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Manages the hunter waypoint patrol system
+/// </summary>
 public class HunterWaypoint : MonoBehaviour
 {
-    /// <summary>
-    /// 1. Rotate and move in direction of another waypoint once first waypoint has been reached. 'rotAngle'
-    /// 2. Manage distance from waypoint before turn occurs. 'minDist'
-    /// 3. Manage speed of individual bunnies movement. 'speed'
-    /// 4. True or False (bool)variables for bunnies to move between waypoints. 'go'
-    /// 5. True or False (bool)variables for bunnies path to be random between waypoints. 'rand'
-    /// </summary>
-    public GameObject[] waypoints;
-    public int num = 0;
+    public GameObject[] waypoints; // List of waypoints for patrol
+    public int num = 0; // Keeps track of current waypoint
+    public float rotAngle; // The angle hunter should rotate (CW) each time they get to a waypoint
+    public float minDist; // The minimum distance the hunter can be from a waypoint before switching
+    public float speed; // The speed at which the hunter moves
 
-    public float rotAngle = 90;
-    public float minDist;
-    public float speed;
-
-    public bool go = true;
-
-    /// <summary>
-    /// 1. Calculate distance between a Bunny and the waypoint its heading towards. <para />
-    /// 2a. Check if Bunny is able to move (go = true)
-    ///     - If distance is greater then the minimum distance then bunny is allowed to move. 
-    ///     - If minimum distance is greater than distance then bunny continues to 'else'.
-    ///         - else: If rand = false then bunny moves to waypoint next in array.
-    ///         - else: If rand = false and the bunny has reach the final waypoint in array bunny reverts back to its orginal waypoint. <para />
-    /// 2b. Check if Bunny is set move (go = true) and set to choose random waypoint (rand = true)
-    ///     - If rand = true, Bunny selects a random number in the range of 0 - final way point in array.
-    /// </summary>
-    // Update is called once per frame
     void Update()
     {
+        // Get distance between hunter and next waypoint
         float dist = Vector3.Distance(gameObject.transform.position, waypoints[num].transform.position);
 
-        if (go)
+        // If the distance away is greater than the minDist, Execute Move() method
+        if (dist > minDist)
         {
-            if (dist > minDist)
+            Move();
+        }
+        else
+        // Else if hunter is within min distance
+        {
+            // Check if next waypoint exist, if current waypoint is last set back to 0
+            if (num + 1 == waypoints.Length)
             {
-                Move();
+                num = 0;
             }
+            // Else
             else
             {
-                if (num + 1 == waypoints.Length)
-                {
-                    num = 0;
-                }
-                else
-                {
-                    num++;
-                }
-
-                /// <summary>
-                /// 1.Bunny will then go through the functions of rotating.
-                /// 2.Rotating Bunny towards the next waypoint to then move forward.
-                /// </summary>
-                Vector3 r = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + rotAngle, transform.eulerAngles.z);
-                transform.eulerAngles = r;
+                // +1 to num
+                num++;
             }
+            // Apply rotation
+            Vector3 r = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + rotAngle, transform.eulerAngles.z);
+            transform.eulerAngles = r;
         }
-
-           
     }
+
     /// <summary>
-    /// 1. If Bunny can move (go = true) if distance is greater than minimum distance.
+    /// Moves the hunter towards next waypoint
     /// </summary>
     public void Move()
     {
+        // Assign tPos to position of next waypoint
         Vector3 tPos = new Vector3(waypoints[num].transform.position.x , waypoints[num].transform.position.y, waypoints[num].transform.position.z);
-        //gameObject.transform.LookAt(tPos);
+        // Move hunter forward at set speed
         gameObject.transform.position += (waypoints[num].transform.position - transform.position) * speed * Time.deltaTime;
     }
 
