@@ -60,13 +60,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\JellyShader\Scripts\JellyClickReceiver.cs" />
     <Compile Include="Assets\Scripts\CageManager.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Finish.cs" />
     <Compile Include="Assets\Scripts\FollowManager.cs" />
     <Compile Include="Assets\Scripts\FollowMovement.cs" />
     <Compile Include="Assets\Scripts\FoxMovement.cs" />
     <Compile Include="Assets\Scripts\HUDManager.cs" />
     <Compile Include="Assets\Scripts\HunterWaypoint.cs" />
+    <Compile Include="Assets\Scripts\LogTrigger.cs" />
     <Compile Include="Assets\Scripts\SpottedTrigger.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

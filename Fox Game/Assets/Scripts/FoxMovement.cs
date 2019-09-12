@@ -11,6 +11,7 @@ public class FoxMovement : MonoBehaviour
     public float rotSpeed; // Speed at which Fox will rotate
     public float checkRadius; // Radius of the groundCheckObj
     public GameObject groundCheckObj; // The gameObject that is the groundCheckObj
+    public bool isControlling;
 
     private float velocity; // The value that tracks the velocity of the player
     private float currentSpeed; // Keeps track of the current speed of the player
@@ -30,30 +31,33 @@ public class FoxMovement : MonoBehaviour
     // Check inputs and apply gravity and movement
     void Update()
     {
-        // Input variable booleans
-        bool f = Input.GetButton("Forwards");
-        bool b = Input.GetButton("Backwards");
-        bool l = Input.GetButton("Left");
-        bool r = Input.GetButton("Right");
-
-        // Assign isGrounded, check if the groundCheckObj is touching any onj in "Ground" layer
-        isGrounded = Physics.CheckSphere(groundCheckObj.transform.position, checkRadius, LayerMask.GetMask("Ground"), QueryTriggerInteraction.Ignore);
-
-        // Create and assign the move variable
-        Vector3 move = Vector3.zero;
-
-        // Check if isGrounded, adjust velocity value based on true or false
-        if (isGrounded == true)
+        if (isControlling == true)
         {
-            velocity = -gravity * Time.deltaTime;
-        }
-        else
-        {
-            velocity -= gravity * Time.deltaTime;
-        }
+            // Input variable booleans
+            bool f = Input.GetButton("Forwards");
+            bool b = Input.GetButton("Backwards");
+            bool l = Input.GetButton("Left");
+            bool r = Input.GetButton("Right");
 
-        // Send position, velocity variables and inputs to method
-        ApplyMovement(move, velocity, f, b, l, r);
+            // Assign isGrounded, check if the groundCheckObj is touching any onj in "Ground" layer
+            isGrounded = Physics.CheckSphere(groundCheckObj.transform.position, checkRadius, LayerMask.GetMask("Ground"), QueryTriggerInteraction.Ignore);
+
+            // Create and assign the move variable
+            Vector3 move = Vector3.zero;
+
+            // Check if isGrounded, adjust velocity value based on true or false
+            if (isGrounded == true)
+            {
+                velocity = -gravity * Time.deltaTime;
+            }
+            else
+            {
+                velocity -= gravity * Time.deltaTime;
+            }
+
+            // Send position, velocity variables and inputs to method
+            ApplyMovement(move, velocity, f, b, l, r);
+        }
     }
 
     /// <summary>
