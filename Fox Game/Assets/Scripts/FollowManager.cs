@@ -24,33 +24,35 @@ public class FollowManager : MonoBehaviour
 
     void Update()
     {
-        // Update input booleans
-        bool f = Input.GetButton("Forwards");
-        bool b = Input.GetButton("Backwards");
-        bool l = Input.GetButton("Left");
-        bool r = Input.GetButton("Right");
+        if (PauseMenu.isPaused == false) {
+            // Update input booleans
+            bool f = Input.GetButton("Forwards");
+            bool b = Input.GetButton("Backwards");
+            bool l = Input.GetButton("Left");
+            bool r = Input.GetButton("Right");
 
-        // Get amount of frames inbetween foxes
-        int framesPerTime = Mathf.RoundToInt(followTime / Time.deltaTime);
-        framesPerGap = framesPerTime / 3;
+            // Get amount of frames inbetween foxes
+            int framesPerTime = Mathf.RoundToInt(followTime / Time.deltaTime);
+            framesPerGap = framesPerTime / 3;
 
-        // Check if any input is true (pressed), if so add a new position and rotation to respective list
-        if (f == true || b == true || l == true || r == true)
-        {
-            storedPositions.Add(new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
-            storedRotations.Add(new Vector3(transform.eulerAngles.x - 90f, transform.eulerAngles.y, transform.eulerAngles.z));
-        }
+            // Check if any input is true (pressed), if so add a new position and rotation to respective list
+            if (f == true || b == true || l == true || r == true)
+            {
+                storedPositions.Add(new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
+                storedRotations.Add(new Vector3(transform.eulerAngles.x - 90f, transform.eulerAngles.y, transform.eulerAngles.z));
+            }
 
-        // If storedPositions has more than framesPerTime items, delete the oldest item
-        if (storedPositions.Count > framesPerTime)
-        {
-            storedPositions.RemoveAt(0);
-        }
+            // If storedPositions has more than framesPerTime items, delete the oldest item
+            if (storedPositions.Count > framesPerTime)
+            {
+                storedPositions.RemoveAt(0);
+            }
 
-        // If storedRotations has more than framesPerTime items, delete the oldest item
-        if (storedRotations.Count > framesPerTime)
-        {
-            storedRotations.RemoveAt(0);
+            // If storedRotations has more than framesPerTime items, delete the oldest item
+            if (storedRotations.Count > framesPerTime)
+            {
+                storedRotations.RemoveAt(0);
+            }
         }
     }
 }

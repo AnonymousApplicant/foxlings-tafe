@@ -35,7 +35,7 @@ public class SpottedTrigger : MonoBehaviour
             }
 
             // Execute captured method
-            hud.Captured();
+            hud.Failed();
         }
     }
 }

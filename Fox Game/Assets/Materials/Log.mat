@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Log
   m_Shader: {fileID: 4800000, guid: b965f82ca09623c41afded17f5d27c27, type: 3}
-  m_ShaderKeywords: _AOUV_UV0 _GRADIENTSPACE_WORLD_SPACE _GRADSETTINGS_B_USE_GLOBAL
+  m_ShaderKeywords: _ALPHABLEND_ON _AOUV_UV0 _GRADIENTSPACE_WORLD_SPACE _GRADSETTINGS_B_USE_GLOBAL
     _GRADSETTINGS_D_USE_GLOBAL _GRADSETTINGS_F_USE_GLOBAL _GRADSETTINGS_L_USE_GLOBAL
     _GRADSETTINGS_R_USE_GLOBAL _GRADSETTINGS_T_USE_GLOBAL _LMAPBLENDINGMODE_ADD _MODE_OPAQUE
     _OTHERSETTINGS_ON _SHADING_B_VERTEX_COLOR _SHADING_D_VERTEX_COLOR _SHADING_F_VERTEXCOLOR
@@ -79,7 +79,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DontMix: 0
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _Fade: 1
     - _FogHeight: 10
     - _FogYStartPos: 0
@@ -107,7 +107,7 @@ Material:
     - _LmapEnable: 0
     - _MainTexturePower: 0
     - _Metallic: 0
-    - _Mode: 0
+    - _Mode: 2
     - _NormalIntensity: 0
     - _OcclusionStrength: 1
     - _OtherSettings: 1
@@ -146,10 +146,10 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularIntensity: 0
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _UVSec: 0
     - _UnityFogEnable: 0
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - _AOColor: {r: 1, g: 1, b: 1, a: 1}
     - _AmbientColor: {r: 0, g: 0, b: 0, a: 0}

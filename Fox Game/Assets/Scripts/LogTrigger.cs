@@ -2,6 +2,9 @@
 
 public class LogTrigger : MonoBehaviour
 {
+    public GameObject notifier;
+    public GameObject tooltip;
+
     private HUDManager hud;
     private FollowManager followManager;
     private bool triggered;
@@ -11,6 +14,21 @@ public class LogTrigger : MonoBehaviour
     {
         hud = FindObjectOfType<HUDManager>();
         followManager = FindObjectOfType<FollowManager>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player") 
+        {
+            if (followManager.collectedFoxes.Count < 3)
+            {
+                notifier.SetActive(true);
+            }
+            else
+            {
+                tooltip.SetActive(true);
+            }
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -26,13 +44,22 @@ public class LogTrigger : MonoBehaviour
                         // Trigger log animation
                         GetComponentInParent<Animator>().SetTrigger("triggerLog");
                         triggered = true;
+                        tooltip.SetActive(false);
                     }
                 }
             }
-            else
-            {
-                hud.GetComponentInChildren<Animator>().SetTrigger("triggerIcon");
-            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (followManager.collectedFoxes.Count < 3)
+        {
+            notifier.SetActive(false);
+        }
+        else
+        {
+            tooltip.SetActive(false);
         }
     }
 }

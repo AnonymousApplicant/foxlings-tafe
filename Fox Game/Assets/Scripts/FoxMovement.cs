@@ -22,6 +22,7 @@ public class FoxMovement : MonoBehaviour
 
     void Start()
     {
+        isControlling = true;
         // Assign controller to variable
         controller = gameObject.GetComponent<CharacterController>();
         // Set current speed to moveSpeed default

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Xml.Schema;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,19 +15,14 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI stars;
     public TextMeshProUGUI congrats;
     public TextMeshProUGUI timerText;
-    public TextMeshProUGUI disclaimer;
-    public TextMeshProUGUI instructions;
-    public Image background;
     public Button retry;
-    public Button start;
-    public Image title;
     public List<Image> foxlingCounter;
-    public int levelTime;
+    public float levelTime;
+    public float starTime;
 
     private int listTracker;
     private FollowManager followManager;
     private FoxMovement foxMovement;
-    private bool started;
     private float timer;
 
     // Find the FollowManager script and assign to followManager
@@ -38,18 +34,22 @@ public class HUDManager : MonoBehaviour
 
     private void Start()
     {
-        retry.onClick.AddListener(RetryClicked);
-        start.onClick.AddListener(StartClicked);
         listTracker = followManager.collectedFoxes.Count;
     }
 
     private void Update()
     {
-        if (started == true)
+        if (foxMovement.isControlling == true) 
         {
             timer += Time.deltaTime;
 
-            // timerText.SetText("Timer: " + FloatTimeConvert(timer) + " / " + IntTimeConvert(levelTime));
+            timerText.SetText("Timer: " + TimeConvert(timer) + Environment.NewLine + "Star " + TimeConvert(starTime) + " / " + TimeConvert(levelTime) + " Limit");
+
+            if (timer > levelTime)
+            {
+                captured.SetText("Times Up");
+                Failed();
+            }
         }
 
         if (followManager.collectedFoxes.Count != listTracker)
@@ -72,33 +72,18 @@ public class HUDManager : MonoBehaviour
         }
     }
 
-    void RetryClicked()
+    public void RetryClicked()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void StartClicked()
-    {
-        started = true;
-        foxMovement.isControlling = true;
-        start.gameObject.SetActive(false);
-        title.gameObject.SetActive(false);
-        disclaimer.gameObject.SetActive(false);
-        instructions.gameObject.SetActive(false);
-        background.gameObject.SetActive(false);
-
-        // timerText.gameObject.SetActive(true);
-        for (int i = 0; i < 3; i++)
-        {
-            foxlingCounter[i].gameObject.SetActive(true);
-        }
-    }
-
     // Captured method that displays captured text
-    public void Captured()
+    public void Failed()
     {
         captured.gameObject.SetActive(true);
         retry.gameObject.SetActive(true);
+
+        foxMovement.isControlling = false;
     }
 
     public void FinishGame()
@@ -106,7 +91,7 @@ public class HUDManager : MonoBehaviour
         congrats.gameObject.SetActive(true);
         retry.gameObject.SetActive(true);
 
-        if (timer < levelTime)
+        if (timer < starTime)
         {
             stars.SetText("AAA");
         }
@@ -116,25 +101,16 @@ public class HUDManager : MonoBehaviour
         }
 
         stars.gameObject.SetActive(true);
+        foxMovement.isControlling = false;
     }
 
-    private string IntTimeConvert(int time)
+    private string TimeConvert(float time)
     {
-        TimeSpan t = TimeSpan.FromSeconds(time);
+        int minutes = Mathf.FloorToInt(time / 60);
+        int seconds = Mathf.FloorToInt(time - minutes * 60);
 
-        const string Format = "{1:D2}:{2:D2}";
-        string answer = string.Format(Format, t.Minutes, t.Seconds);
-
-        return answer;
-    }
-
-    private string FloatTimeConvert(float time)
-    {
-        TimeSpan t = TimeSpan.FromSeconds(Mathf.RoundToInt(time));
-
-        const string Format = "{1:D2}:{2:D2}";
-        string answer = string.Format(Format, t.Minutes, t.Seconds);
-
-        return answer;
+        string result = string.Format("{0:00}:{1:00}", minutes, seconds);
+        
+        return result;
     }
 }

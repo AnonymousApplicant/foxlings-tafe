@@ -24,7 +24,7 @@ public class FollowMovement : MonoBehaviour
     void Update()
     {
         // Check if the foxling is following, otherwise do nothing
-        if (isFollowing == true)
+        if (PauseMenu.isPaused == false && isFollowing == true)
         {
             // Check if collected = false, if it does deactivate the exclamation object then set collected to true
             if (collected == false)
