@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Manages the pause menu
+/// </summary>
 public class PauseMenu : MonoBehaviour
 {
-    public static bool isPaused;
+    public static bool isPaused; // 
     public GameObject pauseMenuUI;
 
     private FoxMovement foxMovement;

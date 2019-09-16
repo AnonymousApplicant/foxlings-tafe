@@ -10,7 +10,6 @@ public class FollowMovement : MonoBehaviour
 
     private FollowManager followManager; // FollowManager script variable
     private bool assigned = false; // Keeps track if the foxling has assigned itself to the conga line
-    [SerializeField]
     private int position; // Keeps track of what position the foxling is in the conga line (what list element they grab from)
     private int waitCount = 0; // Keeps track of how many frames have passed since collection
     private bool collected = false; // Keeps track of if the foxling got collected
