@@ -16,6 +16,7 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI congrats; // Congratulations text when you complete a level
     public TextMeshProUGUI timerText; // Text that displays all three times
     public Button retry; // Retry button to retry levels
+    public Button exit;
     public List<Image> foxlingCounter; // List of foxling icon images
     public float levelTime; // Float variable for the level time limit
     public float starTime; // Float variable for the level time star 
@@ -42,7 +43,7 @@ public class HUDManager : MonoBehaviour
     private void Update()
     {
         // If you can control character, increase timer, se timer texts using method, check if timer is more than the level time limit
-        if (foxMovement.isControlling == true) 
+        if (foxMovement.isControlling == true)
         {
             timer += Time.deltaTime;
 
@@ -81,6 +82,13 @@ public class HUDManager : MonoBehaviour
     {
         // Reloads current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    // Triggered when exit button is pressed
+    public void QuitClicked()
+    {
+        Debug.Log("GAME QUIT!");
+        Application.Quit();
     }
 
     // Captured method that displays captured text

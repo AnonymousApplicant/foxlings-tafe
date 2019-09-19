@@ -65,7 +65,6 @@
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\SpottedTrigger.cs" />
-     <Compile Include="Assets\Scripts\TransparentObj.cs" />
      <Compile Include="Assets\UniPolyWater\Scripts\BallDrop.cs" />
      <Compile Include="Assets\UniPolyWater\Scripts\DynamicWater.cs" />
      <Compile Include="Assets\UniPolyWater\Scripts\EnableDepth.cs" />

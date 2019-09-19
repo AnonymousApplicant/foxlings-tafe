@@ -31,7 +31,7 @@ public class FollowMovement : MonoBehaviour
                 exclamation.gameObject.SetActive(false);
                 collected = true;
             }
-            
+
             // If foxling has not been assigned, assign it a position based on currect list of foxlings
             if (assigned == false)
             {
@@ -68,8 +68,19 @@ public class FollowMovement : MonoBehaviour
                 bool l = Input.GetButton("Left");
                 bool r = Input.GetButton("Right");
 
-                // Check if any input is being pressed, if so update rotation and position
-                if (f || b || l || r)
+                // Check for opposites
+                bool opposites = false;
+                if (f && b)
+                {
+                    opposites = true;
+                }
+                else if (l && r)
+                {
+                    opposites = true;
+                }
+
+                // Check if any input is pressed and not two opposites, if so update position and rotation to respective list
+                if ((f == true || b == true || l == true || r == true) && opposites == false)
                 {
                     transform.position = followManager.storedPositions[position];
                     transform.eulerAngles = followManager.storedRotations[position];

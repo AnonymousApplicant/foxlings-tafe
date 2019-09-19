@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Finish : MonoBehaviour
 {
-    private FollowManager followManager;
-    public HUDManager hud; // HUDManager script variable
+    private FollowManager followManager; // Script reference
+    public HUDManager hud; // Script reference
 
     // Find the FollowManager script and assign to followManager, do the same with hud but for HUDManager
     void Awake()

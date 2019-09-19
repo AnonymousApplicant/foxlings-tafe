@@ -12,6 +12,8 @@ public class FollowManager : MonoBehaviour
     public List<Vector3> storedRotations; // Keeps track of the last 45 frames of the players rotation
     public List<GameObject> collectedFoxes; // Keeps track of the player and any collected Foxlings
 
+    private List<bool> bL;
+
     void Awake()
     {
         // Assign the storedPositions/Rotations variable a new Vector3 list
@@ -35,8 +37,19 @@ public class FollowManager : MonoBehaviour
             int framesPerTime = Mathf.RoundToInt(followTime / Time.deltaTime);
             framesPerGap = framesPerTime / 3;
 
-            // Check if any input is true (pressed), if so add a new position and rotation to respective list
-            if (f == true || b == true || l == true || r == true)
+            // Check for opposites
+            bool opposites = false;
+            if (f && b)
+            {
+                opposites = true;
+            }
+            else if (l && r)
+            {
+                opposites = true;
+            }
+
+            // Check if any input is pressed and not two opposites, if so add a new position and rotation to respective list
+            if ((f == true || b == true || l == true || r == true) && opposites == false)
             {
                 storedPositions.Add(new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
                 storedRotations.Add(new Vector3(transform.eulerAngles.x - 90f, transform.eulerAngles.y, transform.eulerAngles.z));
