@@ -407,8 +407,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 73
+    x: -32000
+    y: -31970
     width: 494
     height: 600
   m_PersistentViewDataDictionary: {fileID: 0}
@@ -417,7 +417,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0cf0ffffd6fbffff
+      m_ExpandedIDs: b8f0ffffd6f0ffff0ef2ffff2af2ffff12fbffffc4340000e8340000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -688,14 +688,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scripts
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\Tyrdle\Desktop\MotherFox\Fox Game
+  m_LastProjectPath: C:\Users\Tyrdle\Desktop\Foxlings\Fox Game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 143}
-    m_SelectedIDs: 160c0000
-    m_LastClickedID: 3094
-    m_ExpandedIDs: 000000007a0a0000b00b0000040c0000b60c0000fa0c0000d00d0000440e00007c0e00004a3300004c3300004e330000503300005233000000ca9a3b
+    scrollPos: {x: 0, y: 127}
+    m_SelectedIDs: fa2d0000
+    m_LastClickedID: 11770
+    m_ExpandedIDs: 000000005e2c0000942d0000e82d00009a2e0000de2e0000b42f00002830000060300000523800005438000056380000583800005a38000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -723,7 +723,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000007a0a0000b00b0000040c0000b60c0000fa0c0000d00d0000440e00007c0e00004a3300004c3300004e3300005033000052330000
+    m_ExpandedIDs: 000000005e2c0000942d0000e82d00009a2e0000de2e0000b42f00002830000060300000523800005438000056380000583800005a380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
